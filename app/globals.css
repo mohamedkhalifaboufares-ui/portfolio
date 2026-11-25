@@ -125,6 +125,80 @@ body {
   animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
+.interest-float {
+  display: inline-flex;
+  animation: interestFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.interest-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.5rem 0.85rem;
+  color: #cbd5e1;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  transition:
+    color 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease,
+    transform 300ms ease;
+}
+
+.interest-pill:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.interest-icon,
+.interest-dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.interest-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  animation: interestPulse 2.8s ease-in-out infinite;
+}
+
+.interest-heading-icon {
+  animation: interestPulse 3.2s ease-in-out infinite;
+}
+
+@keyframes interestFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes interestPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
 .caret::after {
   content: "";
   display: inline-block;

@@ -1,5 +1,18 @@
 import Image from "next/image";
-import { Award, BriefcaseBusiness, GraduationCap } from "lucide-react";
+import {
+  Activity,
+  Award,
+  Bike,
+  BookOpen,
+  BrainCircuit,
+  BriefcaseBusiness,
+  CircleDot,
+  Code2,
+  GraduationCap,
+  Sparkles,
+  Trophy,
+  type LucideIcon,
+} from "lucide-react";
 import Achievements from "@/components/Achievements";
 import SectionHeading from "@/components/SectionHeading";
 import {
@@ -8,6 +21,65 @@ import {
   experience,
   interests,
 } from "@/lib/data";
+
+type InterestMeta = {
+  icon: LucideIcon;
+  glow: string;
+  dot: string;
+  iconColor: string;
+};
+
+const interestMeta: Record<string, InterestMeta> = {
+  "Veille IA & Web": {
+    icon: BrainCircuit,
+    glow: "from-cyan-400/20 via-violet-500/10 to-transparent",
+    dot: "bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.9)]",
+    iconColor: "text-cyan-300",
+  },
+  Hackathons: {
+    icon: Trophy,
+    glow: "from-violet-400/20 via-pink-500/10 to-transparent",
+    dot: "bg-violet-300 shadow-[0_0_10px_rgba(196,181,253,0.9)]",
+    iconColor: "text-violet-300",
+  },
+  "Projets GitHub": {
+    icon: Code2,
+    glow: "from-pink-400/20 via-fuchsia-500/10 to-transparent",
+    dot: "bg-pink-300 shadow-[0_0_10px_rgba(249,168,212,0.9)]",
+    iconColor: "text-pink-300",
+  },
+  "Apprentissage continu": {
+    icon: BookOpen,
+    glow: "from-amber-400/20 via-orange-500/10 to-transparent",
+    dot: "bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.9)]",
+    iconColor: "text-amber-300",
+  },
+  Football: {
+    icon: Activity,
+    glow: "from-lime-400/20 via-emerald-500/10 to-transparent",
+    dot: "bg-lime-300 shadow-[0_0_10px_rgba(190,242,100,0.9)]",
+    iconColor: "text-lime-300",
+  },
+  Tennis: {
+    icon: CircleDot,
+    glow: "from-emerald-400/20 via-cyan-500/10 to-transparent",
+    dot: "bg-emerald-300 shadow-[0_0_10px_rgba(110,231,183,0.9)]",
+    iconColor: "text-emerald-300",
+  },
+  Cyclisme: {
+    icon: Bike,
+    glow: "from-sky-400/20 via-cyan-500/10 to-transparent",
+    dot: "bg-sky-300 shadow-[0_0_10px_rgba(125,211,252,0.9)]",
+    iconColor: "text-sky-300",
+  },
+};
+
+const defaultInterest: InterestMeta = {
+  icon: Sparkles,
+  glow: "from-violet-400/20 via-pink-500/10 to-transparent",
+  dot: "bg-violet-300 shadow-[0_0_10px_rgba(196,181,253,0.9)]",
+  iconColor: "text-violet-300",
+};
 
 export default function Journey() {
   return (
@@ -151,15 +223,44 @@ export default function Journey() {
             </div>
 
             <div className="mt-7 reveal" style={{ animationDelay: "0.35s" }}>
-              <h3 className="mb-4 text-sm font-semibold text-white">
+              <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-white">
+                <Sparkles
+                  size={14}
+                  className="interest-heading-icon text-violet-300"
+                  aria-hidden="true"
+                />
                 Centres d&apos;intérêt
               </h3>
               <div className="flex flex-wrap gap-2">
-                {interests.map((interest) => (
-                  <span key={interest} className="tag">
-                    {interest}
-                  </span>
-                ))}
+                {interests.map((interest, index) => {
+                  const meta = interestMeta[interest] ?? defaultInterest;
+                  const Icon = meta.icon;
+
+                  return (
+                    <span
+                      key={interest}
+                      className="interest-float"
+                      style={{ animationDelay: `${index * 0.12}s` }}
+                    >
+                      <span className="interest-pill group">
+                        <span
+                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${meta.glow} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                          aria-hidden="true"
+                        />
+                        <span
+                          className={`interest-dot ${meta.dot}`}
+                          aria-hidden="true"
+                        />
+                        <Icon
+                          size={13}
+                          className={`interest-icon ${meta.iconColor}`}
+                          aria-hidden="true"
+                        />
+                        <span className="relative z-10">{interest}</span>
+                      </span>
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
