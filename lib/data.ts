@@ -249,7 +249,7 @@ export type Certification = {
 };
 
 export const certificationNote =
-  "10 certificats en images · 6 badges 365 Data Science · 13,5 crédits CPE au total";
+  "11 certificats en images · 6 badges 365 Data Science · 13,5 crédits CPE au total";
 
 export const certifications: Certification[] = [
   {
@@ -311,8 +311,9 @@ export const certifications: Certification[] = [
   },
   {
     title: "PCB Design Training",
-    place: "École Polytechnique de Sousse",
-    period: "2025 – 2026",
+    place: "Club POLY ROBOTS · École Polytechnique de Sousse",
+    period: "Février 2025",
+    image: "/certifications/pcb-design-training.jpg",
   },
   {
     title: "Formation Français",
