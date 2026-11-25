@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import { Cpu, Database, BrainCircuit, Code2, Boxes } from "lucide-react";
 import { profile } from "@/lib/data";
@@ -31,39 +34,80 @@ const satellites = [
 ];
 
 export default function HeroVisual() {
+  const sceneRef = useRef<HTMLDivElement>(null);
+
+  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
+    const scene = sceneRef.current;
+    if (!scene) return;
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(pointer: coarse)").matches
+    ) {
+      return;
+    }
+
+    const rect = scene.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+
+    scene.style.setProperty("--tilt-y", `${((x - 0.5) * 16).toFixed(2)}deg`);
+    scene.style.setProperty("--tilt-x", `${((0.5 - y) * 12).toFixed(2)}deg`);
+    scene.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+    scene.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+  }
+
+  function handlePointerLeave() {
+    const scene = sceneRef.current;
+    if (!scene) return;
+    scene.style.setProperty("--tilt-y", "0deg");
+    scene.style.setProperty("--tilt-x", "0deg");
+    scene.style.setProperty("--mx", "50%");
+    scene.style.setProperty("--my", "50%");
+  }
+
   return (
-    <div className="hero-scene reveal" style={{ animationDelay: "0.2s" }}>
+    <div
+      ref={sceneRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="hero-scene reveal"
+      style={{ animationDelay: "0.2s" }}
+    >
       <div className="hero-scene-glow" />
+      <div className="hero-cursor-glow" aria-hidden="true" />
 
-      <div className="hero-ring hero-ring-one" />
-      <div className="hero-ring hero-ring-two" />
-      <div className="hero-ring hero-ring-three" />
+      <div className="hero-ring hero-ring-one" aria-hidden="true" />
+      <div className="hero-ring hero-ring-two" aria-hidden="true" />
+      <div className="hero-ring hero-ring-three" aria-hidden="true" />
 
-      <div className="hero-core">
-        <div className="glass relative h-full w-full overflow-hidden rounded-[1.9rem] p-2">
-          <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
-            <Image
-              src={profile.photo}
-              alt={`Portrait de ${profile.name}`}
-              fill
-              sizes="(max-width: 1024px) 80vw, 34vw"
-              className="object-cover"
-              loading="eager"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-[#070913]/10 to-transparent" />
+      <div className="hero-tilt">
+        <div className="hero-core">
+          <div className="glass relative h-full w-full overflow-hidden rounded-[1.9rem] p-2">
+            <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
+              <Image
+                src={profile.photo}
+                alt={`Portrait de ${profile.name}`}
+                fill
+                sizes="(max-width: 1024px) 80vw, 34vw"
+                className="object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-[#070913]/10 to-transparent" />
+              <div className="hero-card-shine" aria-hidden="true" />
 
-            <div className="absolute inset-x-0 bottom-0 p-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-black/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300 backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
-                {profile.availability}
-              </span>
-              <p className="mt-3 text-xl font-semibold leading-tight text-white">
-                Mohamed Khalifa
-                <span className="block gradient-text">Boufares</span>
-              </p>
-              <p className="mt-2 text-xs leading-relaxed text-slate-300">
-                Full-Stack · Data · Intelligence artificielle
-              </p>
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-black/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300 backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
+                  {profile.availability}
+                </span>
+                <p className="mt-3 text-xl font-semibold leading-tight text-white">
+                  Mohamed Khalifa
+                  <span className="block gradient-text">Boufares</span>
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-slate-300">
+                  Full-Stack · Data · Intelligence artificielle
+                </p>
+              </div>
             </div>
           </div>
         </div>

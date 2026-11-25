@@ -66,4 +66,4 @@ public/                 CV, photo, certificats et fichiers statiques
 
 ## Design
 
-Thème sombre avec dégradés cyan / violet / rose, effets de verre, animations douces et mise en page responsive. Les animations CSS respectent la préférence système « réduire les animations ».
+Thème sombre avec dégradés cyan / violet / rose, effets de verre, animations douces et mise en page responsive. La scène 3D du hero réagit à la souris sur ordinateur (inclinaison et halo qui suit le curseur) ; sur mobile et avec « réduire les animations », elle reste statique.

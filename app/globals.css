@@ -231,6 +231,49 @@ body {
   animation: spinGlow 14s linear infinite;
 }
 
+.hero-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--tilt-y, 0deg)) rotateX(var(--tilt-x, 0deg));
+  transition: transform 220ms ease-out;
+}
+
+.hero-cursor-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: 3rem;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(103, 232, 249, 0.16),
+    rgba(168, 85, 247, 0.1) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transition: opacity 300ms ease;
+}
+
+.hero-scene:hover .hero-cursor-glow {
+  opacity: 1;
+}
+
+.hero-card-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.05) 18%,
+    transparent 38%
+  );
+  mix-blend-mode: screen;
+}
+
 .hero-ring {
   position: absolute;
   left: 50%;
