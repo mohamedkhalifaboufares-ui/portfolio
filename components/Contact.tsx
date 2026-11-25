@@ -1,13 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send, Smartphone } from "lucide-react";
+import { Check, Copy, Mail, MapPin, Phone, Send, Smartphone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import SectionHeading from "@/components/SectionHeading";
 import { profile } from "@/lib/data";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,20 +57,38 @@ export default function Contact() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="flex flex-col gap-4 reveal">
-            <a
-              href={`mailto:${profile.email}`}
-              className="glass glass-hover flex items-center gap-4 rounded-2xl p-5"
-            >
-              <span className="rounded-xl bg-cyan-400/15 p-3 text-cyan-300">
-                <Mail size={20} />
-              </span>
-              <div>
-                <div className="text-xs text-slate-500">Email</div>
-                <div className="mt-1 text-sm font-medium text-white">
-                  {profile.email}
+            <div className="glass flex items-center gap-3 rounded-2xl p-5">
+              <a
+                href={`mailto:${profile.email}`}
+                className="flex min-w-0 flex-1 items-center gap-4"
+              >
+                <span className="rounded-xl bg-cyan-400/15 p-3 text-cyan-300">
+                  <Mail size={20} />
+                </span>
+                <div className="min-w-0">
+                  <div className="text-xs text-slate-400">Email</div>
+                  <div className="mt-1 truncate text-sm font-medium text-white">
+                    {profile.email}
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+              <button
+                type="button"
+                onClick={copyEmail}
+                aria-label="Copier mon adresse email"
+                title="Copier l'email"
+                className="rounded-lg border border-white/10 bg-white/5 p-2 text-slate-300 transition-colors hover:border-cyan-300/40 hover:text-cyan-300"
+              >
+                {copied ? (
+                  <Check size={16} className="text-emerald-300" />
+                ) : (
+                  <Copy size={16} />
+                )}
+              </button>
+              <span aria-live="polite" className="sr-only">
+                {copied ? "Email copié" : ""}
+              </span>
+            </div>
 
             <a
               href={`tel:${profile.phone.replace(/\s/g, "")}`}
@@ -69,7 +98,7 @@ export default function Contact() {
                 <Phone size={20} />
               </span>
               <div>
-                <div className="text-xs text-slate-500">Téléphone</div>
+                <div className="text-xs text-slate-400">Téléphone</div>
                 <div className="mt-1 text-sm font-medium text-white">
                   {profile.phone}
                 </div>
@@ -81,7 +110,7 @@ export default function Contact() {
                 <MapPin size={20} />
               </span>
               <div>
-                <div className="text-xs text-slate-500">Localisation</div>
+                <div className="text-xs text-slate-400">Localisation</div>
                 <div className="mt-1 text-sm font-medium text-white">
                   {profile.location}
                 </div>
@@ -94,7 +123,7 @@ export default function Contact() {
                   <Smartphone size={20} />
                 </span>
                 <div>
-                  <div className="text-xs text-slate-500">Retrouvez-moi</div>
+                  <div className="text-xs text-slate-400">Retrouvez-moi</div>
                   <div className="mt-1 text-sm font-medium text-white">
                     GitHub &amp; LinkedIn
                   </div>
@@ -135,6 +164,7 @@ export default function Contact() {
                 </span>
                 <input
                   name="name"
+                  autoComplete="name"
                   required
                   placeholder="Jean Dupont"
                   className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-cyan-400/60 focus:bg-white/[0.08]"
@@ -147,6 +177,7 @@ export default function Contact() {
                 <input
                   name="email"
                   type="email"
+                  autoComplete="email"
                   required
                   placeholder="jean@exemple.com"
                   className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-cyan-400/60 focus:bg-white/[0.08]"
@@ -184,12 +215,12 @@ export default function Contact() {
                 Envoyer le message <Send size={15} />
               </button>
               {sent && (
-                <span className="text-xs text-emerald-300">
+                <span aria-live="polite" className="text-xs text-emerald-300">
                   Votre messagerie va s&apos;ouvrir ✨
                 </span>
               )}
             </div>
-            <p className="mt-4 text-[11px] leading-5 text-slate-500">
+            <p className="mt-4 text-[11px] leading-5 text-slate-400">
               Le formulaire ouvre votre application email avec le message déjà
               pré-rempli — aucun serveur tiers n&apos;est impliqué.
             </p>

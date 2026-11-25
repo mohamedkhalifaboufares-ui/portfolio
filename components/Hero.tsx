@@ -15,10 +15,11 @@ import { profile } from "@/lib/data";
 
 function TypingTagline() {
   const [index, setIndex] = useState(0);
-  const [length, setLength] = useState(0);
+  const [length, setLength] = useState(profile.taglines[0].length);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const current = profile.taglines[index];
     const done = !deleting && length === current.length;
     const empty = deleting && length === 0;
@@ -64,10 +65,10 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            Disponible pour un stage d&apos;été
+            {profile.availability}
           </div>
 
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
             Salut, je suis
             <br />
             <span className="gradient-text">Mohamed Khalifa</span>
@@ -97,7 +98,7 @@ export default function Hero() {
               href="#cv-video"
               className="inline-flex items-center gap-2 rounded-full px-3 py-3 text-sm font-medium text-slate-400 transition-colors hover:text-violet-300"
             >
-              <PlayCircle size={17} /> CV vidéo
+              <PlayCircle size={17} /> CV interactif
             </a>
             <a
               href="/CV-Mohamed-Khalifa-Boufares.pdf"
@@ -136,7 +137,7 @@ export default function Hero() {
               <Mail size={21} />
             </a>
             <span className="h-5 w-px bg-white/15" />
-            <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
+            <span className="inline-flex items-center gap-1.5 text-xs text-slate-400">
               <MapPin size={14} /> {profile.location}
             </span>
           </div>
@@ -147,7 +148,7 @@ export default function Hero() {
 
       <a
         href="#apropos"
-        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-slate-500 transition-colors hover:text-white sm:flex"
+        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-slate-400 transition-colors hover:text-white sm:flex"
         aria-label="Aller à la section à propos"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</span>

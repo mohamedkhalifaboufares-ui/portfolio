@@ -12,7 +12,7 @@ import {
   TestTube2,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { profile, projects, type Project } from "@/lib/data";
+import { projects, type Project } from "@/lib/data";
 
 const filters = [
   "Tous",
@@ -93,6 +93,7 @@ export default function Projects() {
                 key={filter}
                 type="button"
                 onClick={() => setActive(filter)}
+                aria-pressed={active === filter}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   active === filter
                     ? "bg-gradient-to-r from-cyan-400 to-violet-500 text-white shadow-lg shadow-violet-900/30"
@@ -158,14 +159,20 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <a
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`mt-6 inline-flex items-center gap-1.5 text-xs font-semibold ${accent.icon} opacity-80 transition-opacity group-hover:opacity-100`}
-                  >
-                    Voir sur GitHub <ArrowUpRight size={14} />
-                  </a>
+                  {project.repoUrl ? (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`mt-6 inline-flex items-center gap-1.5 text-xs font-semibold ${accent.icon} opacity-80 transition-opacity group-hover:opacity-100`}
+                    >
+                      Voir sur GitHub <ArrowUpRight size={14} />
+                    </a>
+                  ) : (
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-medium text-slate-400">
+                      Projet académique · détails sur demande
+                    </span>
+                  )}
                 </div>
               </article>
             );

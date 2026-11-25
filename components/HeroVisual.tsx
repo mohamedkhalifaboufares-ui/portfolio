@@ -55,7 +55,7 @@ export default function HeroVisual() {
             <div className="absolute inset-x-0 bottom-0 p-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-black/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300 backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
-                Disponible pour un PFE
+                {profile.availability}
               </span>
               <p className="mt-3 text-xl font-semibold leading-tight text-white">
                 Mohamed Khalifa

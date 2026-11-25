@@ -43,7 +43,7 @@ export default function About() {
                   <span key={language.name} className="tag">
                     <Globe2 size={12} className="mr-2 text-cyan-300" />
                     {language.name}
-                    <span className="ml-2 text-slate-500">· {language.level}</span>
+                    <span className="ml-2 text-slate-400">· {language.level}</span>
                   </span>
                 ))}
               </div>

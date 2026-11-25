@@ -11,7 +11,7 @@ export default function Footer() {
             {profile.initials}
             <span className="text-violet-400">.</span>
           </div>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-slate-400">
             © 2026 {profile.name}. Tous droits réservés.
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-slate-500 transition-colors hover:text-cyan-300"
+            className="text-slate-400 transition-colors hover:text-cyan-300"
           >
             <GithubIcon size={18} />
           </a>
@@ -31,14 +31,14 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-slate-500 transition-colors hover:text-cyan-300"
+            className="text-slate-400 transition-colors hover:text-cyan-300"
           >
             <LinkedinIcon size={18} />
           </a>
           <a
             href={`mailto:${profile.email}`}
             aria-label="Email"
-            className="text-slate-500 transition-colors hover:text-cyan-300"
+            className="text-slate-400 transition-colors hover:text-cyan-300"
           >
             <Mail size={18} />
           </a>

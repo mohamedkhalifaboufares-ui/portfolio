@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Award, Maximize2, X } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
@@ -18,14 +18,45 @@ export default function Certificates() {
   const [active, setActive] = useState<(typeof photoCertificates)[number] | null>(
     null
   );
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    if (!active) return;
+    triggerRef.current = document.activeElement as HTMLElement;
+    closeRef.current?.focus();
+    return () => triggerRef.current?.focus();
+  }, [active]);
+
+  useEffect(() => {
+    if (!active) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
+      if (event.key === "Escape") {
+        setActive(null);
+        return;
+      }
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [active]);
 
   return (
     <section
@@ -83,7 +114,7 @@ export default function Certificates() {
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-slate-400">
                   {cert.place} · {cert.period}
                 </p>
               </div>
@@ -99,13 +130,15 @@ export default function Certificates() {
           role="presentation"
         >
           <div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-label={`Certificat ${active.title}`}
+            aria-labelledby="certificate-dialog-title"
             className="glass relative w-full max-w-4xl rounded-3xl p-4 sm:p-6"
             onClick={(event) => event.stopPropagation()}
           >
             <button
+              ref={closeRef}
               type="button"
               onClick={() => setActive(null)}
               aria-label="Fermer l'aperçu du certificat"
@@ -126,7 +159,7 @@ export default function Certificates() {
 
             <div className="mt-5 flex flex-wrap items-end justify-between gap-3 px-1 pb-1">
               <div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 id="certificate-dialog-title" className="text-lg font-semibold text-white">
                   {active.title}
                 </h3>
                 <p className="mt-1 text-sm text-slate-400">

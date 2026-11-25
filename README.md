@@ -1,23 +1,23 @@
 # Portfolio — Mohamed Khalifa Boufares
 
+**Site en ligne :** [portfolio-med-khalifa.vercel.app](https://portfolio-med-khalifa.vercel.app)
+
 Portfolio personnel créé avec **Next.js 16**, **React 19**, **TypeScript** et **Tailwind CSS 4**.
 
-## Lancer le site — le plus simple
+Code source : [github.com/mohamedkhalifaboufares-ui/portfolio](https://github.com/mohamedkhalifaboufares-ui/portfolio)
 
-Double-cliquez sur **`dev.bat`** à la racine du projet, puis ouvrez [http://127.0.0.1:3000](http://127.0.0.1:3000) (ou `http://localhost:3000`).
+## Lancer le site en local
 
-Le script utilise la version portable de Node.js installée dans `C:\Users\user\AppData\Local\node-portable`, donc aucune installation globale n'est nécessaire.
-
-## Lancer le site en ligne de commande
-
-Depuis le dossier du projet (`C:\Users\user\Documents\Projet par défaut`) :
+Si Node.js est installé :
 
 ```bash
-set PATH=C:\Users\user\AppData\Local\node-portable;%PATH%
+npm install
 npm run dev
 ```
 
-Si vous installez Node.js globalement depuis [nodejs.org](https://nodejs.org), la première ligne n'est plus nécessaire.
+Puis ouvrir [http://127.0.0.1:3000](http://127.0.0.1:3000).
+
+Sur cet ordinateur, les scripts `dev.bat` et `build.bat` utilisent la version portable de Node.js située dans `C:\Users\user\AppData\Local\node-portable`.
 
 ## Commandes utiles
 
@@ -30,36 +30,40 @@ Si vous installez Node.js globalement depuis [nodejs.org](https://nodejs.org), l
 
 ## Personnaliser le contenu
 
-Tout le texte du site (profil, expérience, projets, compétences, formation, certifications, CV vidéo et centres d'intérêt) se trouve dans un seul fichier :
+Tout le texte du site (profil, expérience, projets, compétences, formation, certifications, CV interactif et centres d'intérêt) se trouve dans un seul fichier :
 
 **`lib/data.ts`**
 
 Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experience`, `certifications`, `videoCv`, `distinction` et `interests` pour mettre à jour le portfolio.
 
-### Remplacer la photo et les certificats
+### Photo, certificats et CV
 
-- **Photo principale** : remplacez simplement `public/photo.jpg` par votre vraie photo en gardant le même nom de fichier. Elle apparaît dans le hero, la navigation, la section À propos et le CV vidéo.
-- **Photos des certificats** : les six images sont dans `public/certifications/`. Les noms de fichiers sont définis dans le champ `image` de chaque entrée de `certifications` dans `lib/data.ts`.
+- **Photo principale** : remplacez `public/photo.jpg` en gardant le même nom. Elle apparaît dans le hero, la navigation, la section À propos, le CV interactif et l'image de partage.
+- **Photos des certificats** : six images sont dans `public/certifications/`. Cinq certifications n'ont pas encore d'image : Udacity, Siemens/TIA Portal, Raspberry Pi, PCB et ELIT.
+- **CV PDF** : remplacez `public/CV-Mohamed-Khalifa-Boufares.pdf` pour publier une version plus récente.
+- **CV interactif** : la section est une présentation animée et chapitrée. Pour utiliser une vraie vidéo, placez le fichier dans `public/` puis renseignez `videoCv.src` dans `lib/data.ts`.
 
-### CV vidéo
+### Liens des projets
 
-La section **CV vidéo** est une présentation animée et chapitrée, lisible sans héberger de fichier vidéo. Les chapitres sont modifiables dans `videoCv` (`lib/data.ts`). Si vous avez une vraie vidéo filmée, placez-la dans `public/` puis indiquez son chemin dans `videoCv.src` et `components/VideoCV.tsx` pourra afficher un lecteur vidéo classique.
-
-Les liens GitHub et LinkedIn sont définis dans `profile`. Le CV PDF est disponible dans `public/CV-Mohamed-Khalifa-Boufares.pdf` — remplacez ce fichier pour publier une version plus récente.
+Le champ optionnel `repoUrl` dans chaque entrée de `projects` (`lib/data.ts`) permet d'ajouter un vrai lien GitHub par projet. Tant qu'il n'est pas renseigné, la carte affiche « Projet académique · détails sur demande » plutôt qu'un lien trompeur.
 
 ## Structure
 
 ```
 app/
-  layout.tsx      Métadonnées, polices et style global
-  page.tsx        Assemblage des sections
-  globals.css     Thème, animations et utilitaires
-components/       Navbar, Hero, HeroVisual, About, Projects, Skills, Journey,
-                  Certificates, VideoCV, Contact, Footer
-lib/data.ts       Tout le contenu du portfolio
-public/           CV, photo, certificats et fichiers statiques
+  layout.tsx            Métadonnées, polices et style global
+  page.tsx              Assemblage des sections
+  globals.css           Thème, animations et utilitaires
+  opengraph-image.tsx   Image de partage LinkedIn / réseaux sociaux
+  icon.tsx              Favicon MKB
+  robots.ts             Instructions pour les moteurs de recherche
+  sitemap.ts            Plan du site
+components/             Navbar, Hero, HeroVisual, About, Projects, Skills,
+                        Journey, Certificates, VideoCV, Contact, Footer
+lib/data.ts             Tout le contenu du portfolio
+public/                 CV, photo, certificats et fichiers statiques
 ```
 
 ## Design
 
-Thème sombre avec dégradés cyan / violet / rose, effets de verre, animations douces et mise en page responsive. Les animations respectent la préférence système « réduire les animations ».
+Thème sombre avec dégradés cyan / violet / rose, effets de verre, animations douces et mise en page responsive. Les animations CSS respectent la préférence système « réduire les animations ».

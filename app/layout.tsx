@@ -14,10 +14,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-med-khalifa.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Mohamed Khalifa Boufares — Portfolio",
   description:
-    "Portfolio de Mohamed Khalifa Boufares, étudiant en Génie Logiciel et Systèmes d'Information. Projets Full-Stack, IA, data engineering, certifications en images et CV vidéo interactif.",
+    "Portfolio de Mohamed Khalifa Boufares, étudiant en Génie Logiciel et Systèmes d'Information. Projets Full-Stack, IA, data engineering, certifications en images et CV interactif.",
   keywords: [
     "portfolio",
     "génie logiciel",
@@ -26,14 +30,23 @@ export const metadata: Metadata = {
     "data engineering",
     "intelligence artificielle",
     "IoT",
+    "PFE",
   ],
   authors: [{ name: "Mohamed Khalifa Boufares" }],
   openGraph: {
     title: "Mohamed Khalifa Boufares — Portfolio",
     description:
       "Étudiant en Génie Logiciel & Systèmes d'Information — web, IA, data et IoT.",
+    url: "/",
+    siteName: "Portfolio — Mohamed Khalifa Boufares",
     locale: "fr_FR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohamed Khalifa Boufares — Portfolio",
+    description:
+      "Étudiant en Génie Logiciel & Systèmes d'Information — web, IA, data et IoT.",
   },
 };
 

@@ -85,6 +85,7 @@ export default function VideoCV() {
 
   useEffect(() => {
     if (!playing || videoSrc) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => dispatch({ type: "tick" }), 90);
     return () => window.clearInterval(timer);
   }, [playing]);
@@ -92,14 +93,23 @@ export default function VideoCV() {
   const chapter = chapters[player.chapterIndex];
   const accent = accents[chapter.accent];
 
+  function allowAutoPlay() {
+    return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function togglePlaying() {
+    if (!playing && !allowAutoPlay()) return;
+    setPlaying((value) => !value);
+  }
+
   function selectChapter(index: number) {
     dispatch({ type: "select", index });
-    setPlaying(true);
+    if (allowAutoPlay()) setPlaying(true);
   }
 
   function restart() {
     dispatch({ type: "restart" });
-    setPlaying(true);
+    if (allowAutoPlay()) setPlaying(true);
   }
 
   return (
@@ -108,7 +118,7 @@ export default function VideoCV() {
       <div className="container-page relative">
         <SectionHeading
           number="06"
-          label="CV vidéo"
+          label="CV interactif"
           title={
             <>
               Mon parcours en{" "}
@@ -121,7 +131,7 @@ export default function VideoCV() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.5fr_0.7fr]">
           <div className="glass overflow-hidden rounded-3xl">
-            <div className="video-stage relative aspect-video overflow-hidden bg-[#050713]">
+            <div className="video-stage relative min-h-[22rem] overflow-hidden bg-[#050713] sm:aspect-video sm:min-h-0">
               {videoSrc ? (
                 <video
                   controls
@@ -140,7 +150,7 @@ export default function VideoCV() {
                 <div className="flex items-start justify-between gap-4">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-300 backdrop-blur">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400" />
-                    CV vidéo
+                    CV interactif
                   </span>
                   <span className="font-mono text-[11px] text-slate-400">
                     {chapter.time} / {videoCv.duration}
@@ -160,7 +170,7 @@ export default function VideoCV() {
                 </div>
 
                 <div className="flex items-end justify-between gap-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-500">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-400">
                     {profile.location}
                   </span>
                   <div className={`video-avatar relative h-14 w-14 overflow-hidden rounded-2xl border ${accent.border}`}>
@@ -182,8 +192,8 @@ export default function VideoCV() {
             <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-5 py-4 sm:px-7">
               <button
                 type="button"
-                onClick={() => setPlaying((value) => !value)}
-                aria-label={playing ? "Mettre en pause le CV vidéo" : "Lire le CV vidéo"}
+                onClick={togglePlaying}
+                aria-label={playing ? "Mettre en pause le CV interactif" : "Lire le CV interactif"}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-white shadow-lg shadow-violet-900/30 transition-transform hover:scale-105"
               >
                 {playing ? <Pause size={16} /> : <Play size={16} />}
@@ -191,7 +201,7 @@ export default function VideoCV() {
               <button
                 type="button"
                 onClick={restart}
-                aria-label="Recommencer le CV vidéo"
+                aria-label="Recommencer le CV interactif"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-white/25 hover:text-white"
               >
                 <RotateCcw size={15} />
@@ -204,6 +214,7 @@ export default function VideoCV() {
                     type="button"
                     onClick={() => selectChapter(index)}
                     aria-label={`Aller au chapitre ${item.label}`}
+                    aria-current={index === player.chapterIndex ? "step" : undefined}
                     className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10"
                   >
                     <span
@@ -227,7 +238,7 @@ export default function VideoCV() {
                 ))}
               </div>
 
-              <span className="font-mono text-[11px] text-slate-500">
+              <span className="font-mono text-[11px] text-slate-400">
                 {String(player.chapterIndex + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}
               </span>
             </div>
@@ -246,6 +257,7 @@ export default function VideoCV() {
                     key={item.label}
                     type="button"
                     onClick={() => selectChapter(index)}
+                    aria-current={isActive ? "step" : undefined}
                     className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition-all ${
                       isActive
                         ? "border-white/20 bg-white/10"
@@ -254,7 +266,7 @@ export default function VideoCV() {
                   >
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg font-mono text-[10px] ${
-                        isActive ? "bg-white/15 text-white" : "bg-white/5 text-slate-500"
+                        isActive ? "bg-white/15 text-white" : "bg-white/5 text-slate-400"
                       }`}
                     >
                       {String(index + 1).padStart(2, "0")}
@@ -263,7 +275,7 @@ export default function VideoCV() {
                       <span className={`block text-xs font-semibold ${isActive ? "text-white" : "text-slate-300"}`}>
                         {item.label}
                       </span>
-                      <span className="mt-0.5 block truncate text-[11px] text-slate-500">
+                      <span className="mt-0.5 block truncate text-[11px] text-slate-400">
                         {item.time}
                       </span>
                     </span>
@@ -283,7 +295,7 @@ export default function VideoCV() {
             >
               <Download size={15} /> CV PDF
             </a>
-            <p className="mt-4 text-[11px] leading-5 text-slate-500">
+            <p className="mt-4 text-[11px] leading-5 text-slate-400">
               Présentation interactive : chaque chapitre peut être lu, mis en
               pause ou parcouru librement.
             </p>

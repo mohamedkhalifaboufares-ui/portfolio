@@ -9,6 +9,7 @@ export const profile = {
     "Explorateur IoT & Robotique",
   ],
   location: "Sousse, Tunisie",
+  availability: "Disponible pour un PFE · Stage de fin d'études",
   email: "khalifaboufares@gmail.com",
   phone: "+216 93 973 109",
   github: "https://github.com/mohamedkhalifaboufares-ui",
@@ -44,6 +45,7 @@ export type Project = {
   highlights: string[];
   accent: "cyan" | "violet" | "pink" | "orange" | "lime";
   icon: "sparkles" | "database" | "server" | "diagram" | "code" | "test";
+  repoUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -324,7 +326,7 @@ export type VideoChapter = {
 };
 
 export const videoCv = {
-  title: "CV vidéo interactif",
+  title: "CV interactif",
   src: "",
   duration: "00:45",
   chapters: [

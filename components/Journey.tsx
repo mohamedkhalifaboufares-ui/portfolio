@@ -44,11 +44,11 @@ export default function Journey() {
                       </h4>
                       <p className="mt-1 text-xs text-cyan-300">{item.company}</p>
                     </div>
-                    <span className="font-mono text-[11px] text-slate-500">
+                    <span className="font-mono text-[11px] text-slate-400">
                       {item.period}
                     </span>
                   </div>
-                  <p className="mt-2 text-xs text-slate-500">{item.location}</p>
+                  <p className="mt-2 text-xs text-slate-400">{item.location}</p>
                   <p className="mt-3 text-sm leading-6 text-slate-400">
                     {item.description}
                   </p>
@@ -90,7 +90,7 @@ export default function Journey() {
                     <h4 className="mt-2 text-base font-semibold text-white">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-xs text-slate-500">{item.place}</p>
+                    <p className="mt-1 text-xs text-slate-400">{item.place}</p>
                     <p className="mt-3 text-sm leading-6 text-slate-400">
                       {item.description}
                     </p>
@@ -111,7 +111,7 @@ export default function Journey() {
                   <h4 className="mt-2 text-sm font-semibold text-white">
                     {distinction.title}
                   </h4>
-                  <p className="mt-1 text-xs text-slate-500">{distinction.place}</p>
+                  <p className="mt-1 text-xs text-slate-400">{distinction.place}</p>
                   <p className="mt-3 text-sm leading-6 text-slate-400">
                     {distinction.description}
                   </p>
@@ -161,7 +161,7 @@ export default function Journey() {
                       </p>
                     )}
                   </div>
-                  <span className="shrink-0 font-mono text-[10px] text-slate-500">
+                  <span className="shrink-0 font-mono text-[10px] text-slate-400">
                     {cert.period}
                   </span>
                 </div>

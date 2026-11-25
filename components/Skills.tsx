@@ -79,7 +79,7 @@ export default function Skills() {
               certifications en ligne.
             </span>
           </div>
-          <span className="font-mono text-[11px] text-slate-500">
+          <span className="font-mono text-[11px] text-slate-400">
             learn · build · repeat
           </span>
         </div>
