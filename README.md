@@ -34,7 +34,7 @@ Tout le texte du site (profil, expérience, projets, compétences, formation, ce
 
 **`lib/data.ts`**
 
-Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experience`, `certifications`, `videoCv`, `distinction` et `interests` pour mettre à jour le portfolio.
+Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experience`, `certifications`, `achievements`, `videoCv` et `interests` pour mettre à jour le portfolio.
 
 ### Photo, certificats et CV
 

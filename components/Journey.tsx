@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { Award, BriefcaseBusiness, GraduationCap, Trophy } from "lucide-react";
+import { Award, BriefcaseBusiness, GraduationCap } from "lucide-react";
+import Achievements from "@/components/Achievements";
 import SectionHeading from "@/components/SectionHeading";
 import {
   certifications,
-  distinction,
   education,
   experience,
   interests,
@@ -99,25 +99,7 @@ export default function Journey() {
               ))}
             </div>
 
-            <div className="glass mt-7 rounded-2xl border-amber-400/15 p-6 reveal" style={{ animationDelay: "0.2s" }}>
-              <div className="flex items-start gap-4">
-                <span className="rounded-xl bg-amber-400/15 p-2.5 text-amber-300">
-                  <Trophy size={18} />
-                </span>
-                <div>
-                  <span className="font-mono text-[11px] text-amber-300">
-                    {distinction.period} · Distinction
-                  </span>
-                  <h4 className="mt-2 text-sm font-semibold text-white">
-                    {distinction.title}
-                  </h4>
-                  <p className="mt-1 text-xs text-slate-400">{distinction.place}</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">
-                    {distinction.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <Achievements />
           </div>
 
           <div>

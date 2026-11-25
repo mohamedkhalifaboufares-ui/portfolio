@@ -374,13 +374,37 @@ export const videoCv = {
   ] satisfies VideoChapter[],
 };
 
-export const distinction = {
-  title: "Organisateur & Participant — Compétition Nationale PolyRobots",
-  place: "École Polytechnique de Sousse",
-  period: "2025 – 2026",
-  description:
-    "Coordination d'un événement national dédié à la robotique et à l'IoT.",
+export type Achievement = {
+  title: string;
+  organization: string;
+  period: string;
+  description: string;
+  image: string;
+  location?: string;
+  accent: "amber" | "cyan";
 };
+
+export const achievements: Achievement[] = [
+  {
+    title: "Organisateur & Participant — Compétition Nationale PolyRobots",
+    organization: "École Polytechnique de Sousse · Club PolyRobots",
+    period: "2025 – 2026",
+    description:
+      "Coordination d'un événement national dédié à la robotique et à l'IoT.",
+    image: "/certifications/polyrobots-participation.jpg",
+    accent: "amber",
+  },
+  {
+    title: "Participant — MeetUp Pro 2026",
+    organization: "AIESEC Hadrumet",
+    period: "31 octobre 2026",
+    description:
+      "Participation à un événement professionnel axé sur le networking, l'innovation et les échanges professionnels.",
+    image: "/certifications/meetup-pro-2026.jpg",
+    location: "Orient Palace, Sousse, Tunisie",
+    accent: "cyan",
+  },
+];
 
 export const interests = [
   "Veille IA & Web",
