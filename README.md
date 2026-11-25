@@ -39,7 +39,7 @@ Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experien
 ### Photo, certificats et CV
 
 - **Photo principale** : remplacez `public/photo.jpg` en gardant le même nom. Elle apparaît dans le hero, la navigation, la section À propos, le CV interactif et l'image de partage.
-- **Photos des certificats** : six images sont dans `public/certifications/`. Cinq certifications n'ont pas encore d'image : Udacity, Siemens/TIA Portal, Raspberry Pi, PCB et ELIT.
+- **Photos des certificats** : dix images sont dans `public/certifications/`. Une seule certification n'a pas encore d'image : **PCB Design Training**.
 - **CV PDF** : remplacez `public/CV-Mohamed-Khalifa-Boufares.pdf` pour publier une version plus récente.
 - **CV interactif** : la section est une présentation animée et chapitrée. Pour utiliser une vraie vidéo, placez le fichier dans `public/` puis renseignez `videoCv.src` dans `lib/data.ts`.
 

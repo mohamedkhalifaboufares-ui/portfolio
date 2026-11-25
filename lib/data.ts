@@ -249,7 +249,7 @@ export type Certification = {
 };
 
 export const certificationNote =
-  "6 badges 365 Data Science · 13,5 crédits CPE au total";
+  "10 certificats en images · 6 badges 365 Data Science · 13,5 crédits CPE au total";
 
 export const certifications: Certification[] = [
   {
@@ -293,18 +293,21 @@ export const certifications: Certification[] = [
   },
   {
     title: "Introduction à l'Intelligence Artificielle",
-    place: "Udacity · Machine Learning & Algorithmes IA",
+    place: "Udacity · Al Ghurair TechUp Explorer",
     period: "Mars 2026",
+    image: "/certifications/udacity-intro-ia.jpg",
   },
   {
     title: "TIA Portal (Siemens) — Automatisme",
     place: "Club POLY ROBOTS · École Polytechnique de Sousse",
     period: "2025 – 2026",
+    image: "/certifications/tia-portal-siemens.jpg",
   },
   {
     title: "Robotique avec Raspberry Pi",
     place: "Club POLY ROBOTS · École Polytechnique de Sousse",
     period: "2025 – 2026",
+    image: "/certifications/raspberry-pi.jpg",
   },
   {
     title: "PCB Design Training",
@@ -315,6 +318,7 @@ export const certifications: Certification[] = [
     title: "Formation Français",
     place: "ELIT · École des Langues et d'Informatique",
     period: "Août 2018",
+    image: "/certifications/formation-francais.jpg",
   },
 ];
 
