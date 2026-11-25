@@ -1,0 +1,24 @@
+{
+  "code": "fr",
+  "label": "Français",
+  "shortLabel": "FR",
+  "locale": "fr-FR",
+  "date": "25 novembre 2026",
+  "eyebrow": "Lettre de motivation",
+  "title": "Stage de fin d'études en génie logiciel et intelligence artificielle",
+  "subject": "Objet : Candidature pour un stage de fin d'études",
+  "recipient": "Madame, Monsieur,",
+  "preview": "Étudiant en 3e année de Licence en Génie Logiciel et Systèmes d'Information à GFI University – École Polytechnique de Sousse, je souhaite effectuer mon stage de fin d'études au sein de votre équipe.",
+  "paragraphs": [
+    "Actuellement étudiant en 3e année de Licence en Génie Logiciel et Systèmes d'Information à GFI University – École Polytechnique de Sousse, je souhaite effectuer mon stage de fin d'études au sein de votre équipe. Ma formation me donne des bases solides en développement web et backend, modélisation UML, bases de données relationnelles et conception de systèmes d'information.",
+    "Mon intérêt pour l'intelligence artificielle m'a naturellement amené à travailler sur des projets où la donnée sert des usages concrets. Lors de mon stage de huit semaines chez Matrixcel Business, j'ai participé à la conception d'une plateforme de recommandations personnalisées basée sur le comportement de navigation, en développant un backend Spring Boot sécurisé, une interface React multilingue et un service Python/Flask intégrant des modèles de Machine Learning.",
+    "Je travaille avec React, Spring Boot, Java et SQL Server, et je suis à l'aise sur les différentes étapes d'un projet logiciel : analyse du besoin, conception, développement, tests et déploiement. Le projet Smart Context AI illustre cette approche : un projet d'assistant intelligent centré sur l'exploitation du contexte, qui rejoint mon intérêt pour des applications d'IA utiles et concrètes.",
+    "Motivé, rigoureux et curieux, je cherche aujourd'hui une équipe où mettre ces compétences au service de projets réels et progresser aux côtés de développeurs expérimentés. Un stage au sein de votre organisation serait pour moi l'opportunité de contribuer de manière concrète, d'apprendre vos pratiques d'ingénierie et de donner une dimension professionnelle à mon projet de fin d'études."
+  ],
+  "closing": "Je vous remercie pour l'attention portée à ma candidature et me tiens à votre disposition pour vous transmettre mon CV ou échanger sur ma motivation.",
+  "signatureRole": "Étudiant en Génie Logiciel & Systèmes d'Information",
+  "signatureName": "Mohamed Khalifa Boufares",
+  "fileName": "Lettre-de-motivation-PFE-Mohamed-Khalifa-Boufares-FR.pdf",
+  "pdfPath": "/cover-letter-fr.pdf",
+  "printTitle": "Lettre de motivation — PFE — Mohamed Khalifa Boufares"
+}

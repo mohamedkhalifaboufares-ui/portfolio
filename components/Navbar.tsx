@@ -12,6 +12,7 @@ const links = [
   { label: "Compétences", href: "#competences" },
   { label: "Parcours", href: "#parcours" },
   { label: "CV interactif", href: "#cv-video" },
+  { label: "Lettre", href: "#lettre" },
   { label: "Contact", href: "#contact" },
 ];
 

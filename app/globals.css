@@ -547,6 +547,154 @@ body {
   }
 }
 
+.letter-body {
+  color: #1e293b;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.letter-accent {
+  height: 4px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #f472b6);
+}
+
+.letter-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.letter-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.letter-role {
+  margin-top: 3px;
+  font-size: 9px;
+  color: #64748b;
+}
+
+.letter-contact {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+.letter-date {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.letter-subject {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.letter-recipient {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.letter-paragraph {
+  margin-top: 12px;
+  text-align: justify;
+}
+
+.letter-closing {
+  margin-top: 16px;
+}
+
+.letter-signature {
+  margin-top: 28px;
+}
+
+.letter-signature strong {
+  display: block;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.letter-signature span {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.cover-letter-print {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    display: block !important;
+    background: #fff !important;
+    color: #111827 !important;
+    overflow: visible !important;
+  }
+
+  body > header,
+  body > footer {
+    display: none !important;
+  }
+
+  main {
+    display: block !important;
+  }
+
+  main > * {
+    display: none !important;
+  }
+
+  main > section#lettre {
+    display: block !important;
+  }
+
+  section#lettre > * {
+    display: none !important;
+  }
+
+  section#lettre > .cover-letter-print {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cover-letter-print .letter-body {
+    font-size: 9.8pt;
+    line-height: 1.42;
+  }
+
+  .cover-letter-print .letter-paragraph,
+  .cover-letter-print .letter-header,
+  .cover-letter-print .letter-signature {
+    break-inside: avoid;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

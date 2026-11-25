@@ -1,0 +1,24 @@
+{
+  "code": "en",
+  "label": "English",
+  "shortLabel": "EN",
+  "locale": "en-GB",
+  "date": "25 November 2026",
+  "eyebrow": "Cover letter",
+  "title": "Final-year internship in Software Engineering and Artificial Intelligence",
+  "subject": "Subject: Application for a final-year internship",
+  "recipient": "Dear Sir or Madam,",
+  "preview": "I am currently in the third year of a Software Engineering and Information Systems degree at GFI University – École Polytechnique de Sousse, and I would like to complete my final-year internship with your team.",
+  "paragraphs": [
+    "I am currently in the third year of a Software Engineering and Information Systems degree at GFI University – École Polytechnique de Sousse, and I would like to complete my final-year internship with your team. My academic background gives me a solid foundation in web and backend development, UML modelling, relational databases and the design of information systems.",
+    "My interest in artificial intelligence has led me to work on projects where data serves concrete use cases. During an eight-week internship at Matrixcel Business, I helped design a personalised recommendation platform based on browsing behaviour, building a secure Spring Boot backend, a multilingual React interface and a Python/Flask service integrating machine learning models.",
+    "I work with React, Spring Boot, Java and SQL Server, and I am comfortable across the full software development lifecycle: requirements analysis, design, implementation, testing and deployment. The Smart Context AI project illustrates this approach: an intelligent assistant project focused on using context to deliver more relevant interactions, reflecting my interest in practical and concrete AI applications.",
+    "Motivated, rigorous and curious, I am now looking for a team where I can apply these skills to real projects and learn from experienced developers. An internship within your organisation would allow me to contribute concretely, adopt your engineering practices and give a professional dimension to my final-year project."
+  ],
+  "closing": "Thank you for considering my application. I would be glad to share my CV or discuss my motivation in more detail.",
+  "signatureRole": "Software Engineering and Information Systems Student",
+  "signatureName": "Mohamed Khalifa Boufares",
+  "fileName": "Cover-Letter-PFE-Mohamed-Khalifa-Boufares-EN.pdf",
+  "pdfPath": "/cover-letter-en.pdf",
+  "printTitle": "Cover Letter — Internship — Mohamed Khalifa Boufares"
+}

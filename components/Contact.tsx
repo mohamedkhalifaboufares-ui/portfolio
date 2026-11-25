@@ -43,7 +43,7 @@ export default function Contact() {
       <div className="blob -left-40 bottom-0 h-80 w-80 bg-pink-600" style={{ animationDelay: "-10s" }} />
       <div className="container-page relative">
         <SectionHeading
-          number="07"
+          number="08"
           label="Contact"
           title={
             <>

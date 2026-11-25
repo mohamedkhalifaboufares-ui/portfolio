@@ -1,6 +1,7 @@
 import About from "@/components/About";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
+import CoverLetter from "@/components/CoverLetter";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Journey from "@/components/Journey";
@@ -21,6 +22,7 @@ export default function Home() {
         <Journey />
         <Certificates />
         <VideoCV />
+        <CoverLetter />
         <Contact />
       </main>
       <Footer />

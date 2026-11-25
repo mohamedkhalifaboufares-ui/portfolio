@@ -30,11 +30,13 @@ Sur cet ordinateur, les scripts `dev.bat` et `build.bat` utilisent la version po
 
 ## Personnaliser le contenu
 
-Tout le texte du site (profil, expérience, projets, compétences, formation, certifications, CV interactif et centres d'intérêt) se trouve dans un seul fichier :
+Le texte principal du site (profil, expérience, projets, compétences, formation, certifications, CV interactif et centres d'intérêt) se trouve dans :
 
 **`lib/data.ts`**
 
 Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experience`, `certifications`, `achievements`, `videoCv` et `interests` pour mettre à jour le portfolio.
+
+Les deux versions de la lettre de motivation sont éditables séparément dans `content/cover-letter.fr.json` et `content/cover-letter.en.json`. Après modification, régénère les PDF avec `npm run generate:letters` (Chrome/Chromium requis, ou variable d'environnement `CHROME_PATH`).
 
 ### Photo, certificats et CV
 
@@ -42,6 +44,7 @@ Modifiez les objets `profile`, `projects`, `skillGroups`, `education`, `experien
 - **Photos des certificats** : les onze images sont dans `public/certifications/`. Toutes les certifications du portfolio ont maintenant leur image.
 - **CV PDF** : remplacez `public/CV-Mohamed-Khalifa-Boufares.pdf` pour publier une version plus récente.
 - **CV interactif** : la section est une présentation animée et chapitrée. Pour utiliser une vraie vidéo, placez le fichier dans `public/` puis renseignez `videoCv.src` dans `lib/data.ts`.
+- **Lettre de motivation** : les versions FR et EN sont dans `content/`, et les PDF téléchargeables dans `public/cover-letter-fr.pdf` et `public/cover-letter-en.pdf`.
 
 ### Liens des projets
 
