@@ -14,6 +14,14 @@ export default function Footer() {
           <p className="mt-1 text-xs text-slate-400">
             © 2026 {profile.name}. Tous droits réservés.
           </p>
+          <a
+            href={profile.repository}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 text-xs text-cyan-300/80 transition-colors hover:text-cyan-300"
+          >
+            <GithubIcon size={13} /> Voir le code source du portfolio
+          </a>
         </div>
 
         <div className="flex items-center gap-4">

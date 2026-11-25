@@ -13,6 +13,7 @@ export const profile = {
   email: "khalifaboufares@gmail.com",
   phone: "+216 93 973 109",
   github: "https://github.com/mohamedkhalifaboufares-ui",
+  repository: "https://github.com/mohamedkhalifaboufares-ui/portfolio",
   linkedin: "https://www.linkedin.com/in/khalifaboufares/",
   bio: "Étudiant en 3e année de Licence en Génie Logiciel et Systèmes d'Information à GFI University (Sousse), orienté vers le développement Full-Stack, la Data Science, le Data Engineering et l'intelligence artificielle. J'ai passé 8 semaines chez Matrixcel Business à concevoir une plateforme de recommandation intelligente avec Spring Boot, React, Machine Learning, Docker et CI/CD.",
   bioSuite:
