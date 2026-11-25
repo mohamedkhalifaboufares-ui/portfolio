@@ -12,7 +12,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-const photo = await readFile(join(process.cwd(), "public", "photo.jpg"));
+const photo = await readFile(join(process.cwd(), "public", "photo-original.jpg"));
 const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
 
 export default function OpenGraphImage() {

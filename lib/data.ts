@@ -1,7 +1,7 @@
 export const profile = {
   name: "Mohamed Khalifa Boufares",
   initials: "MKB",
-  photo: "/photo.jpg",
+  photo: "/photo-original.jpg",
   role: "Étudiant en Génie Logiciel & Systèmes d'Information · Full-Stack, Data & IA",
   taglines: [
     "Développeur Full-Stack & IA",
